@@ -1,0 +1,58 @@
+import { link } from "fs";
+
+export const FIAT_CURRENCIES = [
+  { symbol: "usd", fullName: "US Dollar", currencySymbol: "$" },
+  { symbol: "aed", fullName: "UAE Dirham", currencySymbol: "د.إ" },
+  { symbol: "ars", fullName: "Argentine Peso", currencySymbol: "$" },
+  { symbol: "aud", fullName: "Australian Dollar", currencySymbol: "A$" },
+  { symbol: "bdt", fullName: "Bangladeshi Taka", currencySymbol: "৳" },
+  { symbol: "bhd", fullName: "Bahraini Dinar", currencySymbol: ".د.ب" },
+  { symbol: "bmd", fullName: "Bermudian Dollar", currencySymbol: "$" },
+  { symbol: "brl", fullName: "Brazilian Real", currencySymbol: "R$" },
+  { symbol: "cad", fullName: "Canadian Dollar", currencySymbol: "CA$" },
+  { symbol: "chf", fullName: "Swiss Franc", currencySymbol: "CHF" },
+  { symbol: "clp", fullName: "Chilean Peso", currencySymbol: "$" },
+  { symbol: "cny", fullName: "Chinese Yuan", currencySymbol: "¥" },
+  { symbol: "czk", fullName: "Czech Koruna", currencySymbol: "Kč" },
+  { symbol: "dkk", fullName: "Danish Krone", currencySymbol: "kr" },
+  { symbol: "eur", fullName: "Euro", currencySymbol: "€" },
+  { symbol: "gbp", fullName: "British Pound", currencySymbol: "£" },
+  { symbol: "gel", fullName: "Georgian Lari", currencySymbol: "₾" },
+  { symbol: "hkd", fullName: "Hong Kong Dollar", currencySymbol: "HK$" },
+  { symbol: "huf", fullName: "Hungarian Forint", currencySymbol: "Ft" },
+  { symbol: "idr", fullName: "Indonesian Rupiah", currencySymbol: "Rp" },
+  { symbol: "ils", fullName: "Israeli Shekel", currencySymbol: "₪" },
+  { symbol: "inr", fullName: "Indian Rupee", currencySymbol: "₹" },
+  { symbol: "jpy", fullName: "Japanese Yen", currencySymbol: "¥" },
+  { symbol: "krw", fullName: "South Korean Won", currencySymbol: "₩" },
+  { symbol: "kwd", fullName: "Kuwaiti Dinar", currencySymbol: "KD" },
+  { symbol: "lkr", fullName: "Sri Lankan Rupee", currencySymbol: "Rs" },
+  { symbol: "mmk", fullName: "Myanmar Kyat", currencySymbol: "Ks" },
+  { symbol: "mxn", fullName: "Mexican Peso", currencySymbol: "$" },
+  { symbol: "myr", fullName: "Malaysian Ringgit", currencySymbol: "RM" },
+  { symbol: "ngn", fullName: "Nigerian Naira", currencySymbol: "₦" },
+  { symbol: "nok", fullName: "Norwegian Krone", currencySymbol: "kr" },
+  { symbol: "nzd", fullName: "New Zealand Dollar", currencySymbol: "NZ$" },
+  { symbol: "php", fullName: "Philippine Peso", currencySymbol: "₱" },
+  { symbol: "pkr", fullName: "Pakistani Rupee", currencySymbol: "₨" },
+  { symbol: "pln", fullName: "Polish Zloty", currencySymbol: "zł" },
+  { symbol: "rub", fullName: "Russian Ruble", currencySymbol: "₽" },
+  { symbol: "sar", fullName: "Saudi Riyal", currencySymbol: "﷼" },
+  { symbol: "sek", fullName: "Swedish Krona", currencySymbol: "kr" },
+  { symbol: "sgd", fullName: "Singapore Dollar", currencySymbol: "S$" },
+  { symbol: "thb", fullName: "Thai Baht", currencySymbol: "฿" },
+  { symbol: "try", fullName: "Turkish Lira", currencySymbol: "₺" },
+  { symbol: "twd", fullName: "New Taiwan Dollar", currencySymbol: "NT$" },
+  { symbol: "uah", fullName: "Ukrainian Hryvnia", currencySymbol: "₴" },
+  { symbol: "vef", fullName: "Venezuelan Bolívar", currencySymbol: "Bs" },
+  { symbol: "vnd", fullName: "Vietnamese Dong", currencySymbol: "₫" },
+  { symbol: "zar", fullName: "South African Rand", currencySymbol: "R" }
+];
+
+
+export const PROJECTS = [
+  { title: 'Finance Dashboard', description: 'React-based data visualization library' ,link:"/financeDashboard" },
+  { title: 'Crypto Tracker', description: 'App for tracking crypto assets', link:"/cryptoList"   },
+  { title: 'Json Parser', description: 'Parse JSON', link:"/jsonParse"  },
+  {title: "IDE", description: "Online code editor", link:"/ide" }
+];
