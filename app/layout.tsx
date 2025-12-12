@@ -6,9 +6,13 @@ import "./globals.css";
 
 
 export const metadata = {
-  title: "My App",
-  description: "My Next.js 13 App",
+  title: "Yuvraj Singh | React & Next.js Developer",
+  description: "Portfolio and projects of Yuvraj Singh, a React, Next.js, and TypeScript enthusiast building modern web applications.",
+  keywords: ["Yuvraj Singh", "React", "Next.js", "TypeScript", "Frontend Developer", "Web Development", "Portfolio"],
+  authors: [{ name: "Yuvraj Singh" }],
+  
 };
+
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

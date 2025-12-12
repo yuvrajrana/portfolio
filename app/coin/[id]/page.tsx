@@ -23,6 +23,27 @@ async function getCoinDetails(id: string) {
   return res.json();
 }
 
+
+export async function generateMetadata({ params }: CoinPageProps) {
+  const { id } =await params;
+  try {
+    const coin = await getCoinDetails(id);
+
+    return {
+      title: `${coin.name} (${coin.symbol.toUpperCase()}) | Crypto Dashboard`,
+      description: coin.description?.en
+        ? coin.description.en.slice(0, 160)
+        : `Live data and price charts for ${coin.name} (${coin.symbol.toUpperCase()})`,
+  
+    };
+  } catch {
+    return {
+      title: "Crypto Dashboard | Coin Not Found",
+      description: "The requested cryptocurrency could not be found.",
+    };
+  }
+}
+
 // app/coin/[id]/page.tsx
 interface CoinPageProps {
   params: { id: string };
