@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
+import { Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, Button } from "@mui/material";
 import {
   LineChart,
   Line,
@@ -12,6 +12,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import Loader from "../components/Loader";
+import Link from "next/link";
 
 interface TimeSeries {
   [date: string]: {
@@ -24,7 +25,7 @@ interface TimeSeries {
 }
 
 const symbols = ["IBM", "AAPL", "MSFT", "GOOGL"];
-const apiKey = process.env.ALPHA_VANTAGE_API_KEY; // server-only
+const apiKey = process.env.ALPHA_VANTAGE_API_KEY;
 
 export default function FinanceDashboard() {
   const [symbol, setSymbol] = useState("IBM");
@@ -34,8 +35,6 @@ export default function FinanceDashboard() {
   const handleChange = (event: SelectChangeEvent) => {
     setSymbol(event.target.value);
   };
- 
-
 
   useEffect(() => {
     setLoading(true);
@@ -50,8 +49,16 @@ export default function FinanceDashboard() {
       .catch(console.error);
   }, [symbol]);
 
-  if (loading) return <div><Loader/></div>;
-  if (!data) return <div>No data available</div>;
+  if (loading) return <Loader />;
+  if (!data) return (<>
+    {/* Back Button */}
+      <Box sx={{ mb: 3 }}>
+        <Link href="/" passHref>
+          <Button variant="outlined">&larr; Back</Button>
+        </Link>
+      </Box>
+  <div>No data available</div></>
+  );
 
   const chartData = Object.entries(data)
     .map(([date, values]) => ({
@@ -62,19 +69,28 @@ export default function FinanceDashboard() {
 
   return (
     <Box sx={{ width: "100%", maxWidth: 1200, mx: "auto", py: 4 }}>
-      <Box sx={{ mb: 4, display: 'flex', justifyContent: 'right' }}>
-      <FormControl sx={{ mb: 2, minWidth: 120 , mr:2}}>
-        <InputLabel>Symbol</InputLabel>
-        <Select value={symbol} label="Symbol" onChange={handleChange}>
-          {symbols.map((s) => (
-            <MenuItem key={s} value={s}>
-              {s}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
+    
+      {/* Back Button */}
+      <Box sx={{ mb: 3 }}>
+        <Link href="/" passHref>
+          <Button variant="outlined">&larr; Back</Button>
+        </Link>
       </Box>
-      <Box>
+      {/* Symbol Selector */}
+      <Box sx={{ mb: 4, display: 'flex', justifyContent: 'right', mt: "-70px" }}>
+        <FormControl sx={{ mb: 2, minWidth: 120, mr: 2 }}>
+          <InputLabel>Symbol</InputLabel>
+          <Select value={symbol} label="Symbol" onChange={handleChange}>
+            {symbols.map((s) => (
+              <MenuItem key={s} value={s}>
+                {s}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </Box>
+
+      {/* Chart */}
       <ResponsiveContainer width="100%" height={400}>
         <LineChart data={chartData}>
           <CartesianGrid strokeDasharray="3 3" />
@@ -84,7 +100,6 @@ export default function FinanceDashboard() {
           <Line type="monotone" dataKey="close" stroke="#8884d8" />
         </LineChart>
       </ResponsiveContainer>
-      </Box>
     </Box>
   );
 }
